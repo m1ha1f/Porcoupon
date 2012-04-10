@@ -19,7 +19,10 @@ test:
   timeout: 5000
 
 production:
-  adapter: sqlite3
-  database: db/production.sqlite3
+  adapter: postgresql
+  database: postgres
   pool: 5
   timeout: 5000
+  username: muritor
+  password: 123parola
+  host: 188.25.230.24

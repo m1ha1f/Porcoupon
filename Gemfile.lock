@@ -54,8 +54,12 @@ GEM
       mime-types (~> 1.16)
       treetop (~> 1.4.8)
     mime-types (1.18)
+    money (5.0.0)
+      i18n (~> 0.4)
+      json
     multi_json (1.2.0)
     nokogiri (1.5.2-x86-mingw32)
+    pg (0.13.2-x86-mingw32)
     polyglot (0.3.3)
     rack (1.4.1)
     rack-cache (1.2)
@@ -126,6 +130,8 @@ DEPENDENCIES
   annotate (= 2.4.1.beta1)
   coffee-rails (~> 3.2.1)
   jquery-rails
+  money
+  pg
   rails (= 3.2.1)
   rspec-rails (= 2.8.0)
   sass-rails (~> 3.2.3)
