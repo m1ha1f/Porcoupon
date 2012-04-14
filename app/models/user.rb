@@ -14,6 +14,6 @@
 #
 
 class User < ActiveRecord::Base
-	attr_accesible :name, :email, :user_type
+	attr_accessible :name, :email, :user_type
 	has_many :comments
 end

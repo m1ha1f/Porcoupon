@@ -1,0 +1,16 @@
+<table>
+	<tr>
+		<th></th>
+		<th><%=@criteria%></th>
+	</tr>
+<% @deals.each do |d| %>
+	<tr>
+		<td width="500">
+			<%= d.text %>
+		</td>
+		<td>
+			<b><%= d.views %></b>
+		</td>
+	</tr>
+<% end %>
+</table>
