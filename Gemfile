@@ -6,7 +6,7 @@ gem 'rails', '3.2.1'
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 
 gem 'sqlite3', '1.3.5'
-gem 'pg', '0.13.2'
+gem 'pg'
 gem 'money', '5.0.0'
 
 group :development do
@@ -31,6 +31,12 @@ group :assets do
 
   gem 'uglifier', '>= 1.0.3'
 end
+
+group :production do
+  # gems specifically for Heroku go here
+  gem "pg"
+end
+
 
 gem 'jquery-rails', '2.0.1'
 
