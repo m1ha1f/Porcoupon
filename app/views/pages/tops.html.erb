@@ -6,10 +6,16 @@
 <% @deals.each do |d| %>
 	<tr>
 		<td width="500">
-			<%= d.text %>
+			<%= d.title %>
 		</td>
 		<td>
-			<b><%= d.views %></b>
+			<b>
+				<% if @criteria == "Views" %>
+					<%= d.views %>
+				<% elsif @criteria == "Redirects" %>
+					<%= d.redirects %>
+				<% end %>
+			</b>
 		</td>
 	</tr>
 <% end %>

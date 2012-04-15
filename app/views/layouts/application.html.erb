@@ -7,8 +7,16 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
-
-<%= yield %>
-
+	<%= render 'layouts/header' %>
+	<div class="container">
+		<section class="round">
+	        <% flash.each do |key, value| %>
+	          <div class="flash <%= key %>"><%= value %></div>
+	        <% end %>
+	        <%= yield %>
+     	 </section>
+	</div>
+	<%= render 'layouts/footer' %>
+    <%= debug(params) if Rails.env.development? %>
 </body>
 </html>

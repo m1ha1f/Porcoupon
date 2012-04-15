@@ -1,2 +1,7 @@
-<h1>Pages#home</h1>
-<p>Find me in app/views/pages/home.html.erb</p>
+
+<% @deals.each do |d| %>
+	<div class="deal round" >
+		<%= link_to image_tag(d.image_url, :alt => "Porcoupon", :class => "round"), d.deal_url %>
+		<b><%= d.title %></b>
+	</div>
+<% end %>
