@@ -9,7 +9,7 @@
 #
 
 class Store < ActiveRecord::Base
-	attr_accesible :name
+	attr_accessible :name
 	has_many :comments
 	has_many :coupons
 end
