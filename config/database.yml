@@ -10,7 +10,7 @@ development:
   timeout: 5000
   username: muritor
   password: 123parola
-  host: 86.121.128.240
+  host: 188.25.230.128
 #  adapter: sqlite3
 #  database: db/development.sqlite3
 #  pool: 5

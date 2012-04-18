@@ -1,7 +1,28 @@
-
-<% @deals.each do |d| %>
-	<div class="deal round" >
-		<%= link_to image_tag(d.image_url, :alt => "Porcoupon", :class => "round"), d.deal_url %>
-		<b><%= d.title %></b>
-	</div>
+<div id="js-container">
+<% @deals.each_with_index do |d, i| %>
+	<div class = "js-image size-<%= @dims[i] %>"
+    style="top: <%= @poz_top[i] %>px; left: <%= @poz_left[i] %>px;" >
+    <a href='#wolf!'>
+        <img class='js-small-image' src="<%= d.image_url  %>" />
+    </a>
+    <div class='js-small-caption'>
+        <span> <%= d.title %> </span>
+    </div>
+    <div class='js-overlay-caption-content'> 
+        <h4> <%= d.title %> </h4>
+   
+    <p><h4>Description</h4></p>
+    <p><%= d.text %></p>
+    <p><h4>Details</h4></p>
+    <p><%= d.text %></p>
+   
+    <p>
+      <h4>Price:&nbsp;<%= d.price %>&#36;</h4>
+    </p>
+    <p>
+        <a href='#'>Read more &raquo;</a>
+    </p>
+    </div>
+</div>
 <% end %>
+</div>

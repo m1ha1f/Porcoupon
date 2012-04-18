@@ -3,19 +3,34 @@
 <head>
   <title><%= full_title(@title) %></title>
   <%= render 'layouts/stylesheets' %>
-  <%= javascript_include_tag "application" %>
+  <%= javascript_include_tag "jquery-1.7.2.min" %>
+  <%= javascript_include_tag "jquery.hoverintent.min" %>
+  <%= javascript_include_tag "jquery.jsquares.min" %>
+  <script type="text/javascript">
+		$(document).ready(function(){
+
+			$('#js-container').jsquares();
+			$('#js-container-2').jsquares({
+				js_shuffle_in: false, // have the pictures all fade in on page load?
+				js_fade_on_hover: false, // do we want the images to fade on hover or just change opacity?
+				js_caption_slide_down: false // do we want the caption to slide down or just appear?
+			});
+			
+		});
+</script>
+  
   <%= csrf_meta_tags %>
 </head>
 <body>
 	<%= render 'layouts/header' %>
-	<div class="container">
-		<section class="round">
+	<!-- <div class="container" >
+		 <section class="round">
 	        <% flash.each do |key, value| %>
 	          <div class="flash <%= key %>"><%= value %></div>
-	        <% end %>
+	         <% end %>  -->
 	        <%= yield %>
-     	 </section>
-	</div>
+   <!--   	 </section>
+	</div> -->
 	<%= render 'layouts/footer' %>
     <%= debug(params) if Rails.env.development? %>
 </body>
