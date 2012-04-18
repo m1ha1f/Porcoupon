@@ -1,19 +1,31 @@
 <header>
-  <%= link_to logo, root_path %>
-  <nav class="menu" >
-    <ul class="cbdb-menu">
-      <li ><%= link_to "Home", root_path, :class => "blue" %></li>
-      <li ><%= link_to "Tops", tops_path+"?by=views", :class => "blue" %></li>
-      <% if signed_in? %>
-        <li><%= link_to "Profile", current_user %></li>
-      <% else %>
-        <li><%= link_to "Sign up", signup_path %></li>
-        <li><%= link_to "Sign in", "#" %></li>
-      <% end %>
-    </ul>
-  </nav>
-  <br/>
+ <!--  <%= link_to logo, root_path %> -->
+  <!-- <div class="header"></div>
+        <div class="scroll"></div> -->
+        <ul id="navigation">
+          <li> <%= link_to "Home", root_path, :class => "home" %><img src="home.png" style="width:80px;height:60px"/></li> 
+          <li> <%= link_to "Offers", root_path, :class => "offers" %><img src="offers.png" style="width:80px;height:60px"/></li> 
+          <li> <%= link_to "Home", root_path, :class => "home" %><img src="home.png" style="width:80px;height:60px"/></li> 
+          <li> <%= link_to "Home", root_path, :class => "home" %><img src="home.png" style="width:80px;height:60px"/></li>
+          <li> <%= link_to "Home", root_path, :class => "home" %><img src="home.png" style="width:80px;height:60px"/></li>           
+          
+        </ul>
+
+        <script type="text/javascript">
+            $(function() {
+                $('#navigation a').stop().animate({'marginLeft':'-85px'},1000);
+
+                $('#navigation > li').hover(
+                    function () {
+                        $('a',$(this)).stop().animate({'marginLeft':'-2px'},200);
+                    },
+                    function () {
+                        $('a',$(this)).stop().animate({'marginLeft':'-85px'},200);
+                    }
+                );
+            });
+        </script>
   <div class="search">
     <input type="text" /> <button type="button" class="yellow round" style="width: 100px;" >Search</button>
-  <div>
+  <!-- <div> -->
 </header>

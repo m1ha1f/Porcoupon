@@ -1,7 +1,25 @@
 class PagesController < ApplicationController
   def home
     @title = "Home"
-    @deals = Coupon.order("start_at DESC").limit(15)
+
+    ids = Coupon.select("id").select{ |x| x.id};
+
+    sel_ids = []
+
+    for i in 1..15
+      sel_ids.push(ids[rand(ids.length)])
+    end
+
+    @deals = []
+    for i in 0..14
+      c = Coupon.find(sel_ids[i])
+      if c.image_url == ""
+        c.image_url = "http://sfcg.files.wordpress.com/2010/12/imagine.jpg"
+      end
+      @deals.push(c)
+    end
+
+    #@deals = Coupon.order("start_at DESC").limit(15)
     
     @dims = [3, 2, 2, 3, 2, 2, 2, 3, 2, 1, 1, 2, 1, 1, 1];
     @poz_top= [10,10,130,10,10,130,250,250,250,250,310,250,250,370,370];
