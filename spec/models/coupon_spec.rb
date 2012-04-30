@@ -9,10 +9,9 @@ end
 #
 #  id          :integer         not null, primary key
 #  title       :string(255)
-#  text        :text(255)
+#  text        :text
 #  image_url   :string(255)
 #  deal_url    :string(255)
-#  store_url   :string(255)
 #  start_at    :datetime
 #  end_at      :datetime
 #  price       :integer

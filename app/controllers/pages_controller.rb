@@ -1,30 +1,13 @@
 class PagesController < ApplicationController
   def home
     @title = "Home"
-
-    ids = Coupon.select("id").select{ |x| x.id};
-
-    sel_ids = []
-
-    for i in 1..15
-      sel_ids.push(ids[rand(ids.length)])
-    end
-
+    
     @deals = []
-    for i in 0..14
-      c = Coupon.find(sel_ids[i])
-      if c.image_url == ""
-        c.image_url = "http://sfcg.files.wordpress.com/2010/12/imagine.jpg"
-      end
-      @deals.push(c)
-    end
-
-    #@deals = Coupon.order("start_at DESC").limit(15)
+    Coupon.order("RANDOM() LIMIT 17").select{ |x| @deals.push(x)}
     
-    @dims = [3, 2, 2, 3, 2, 2, 2, 3, 2, 1, 1, 2, 1, 1, 1];
-    @poz_top= [10,10,130,10,10,130,250,250,250,250,310,250,250,370,370];
-	  @poz_left=[10,370,370,550,910,910,10,190,550,730,730,820,1000,100,550];
-    
+    @dims = [3,2,2,1,1,1,2,3,2,1,1,2,1,2,3,1,1];
+    @poz_top= [50,0,100,200,200,100,50,150,100,200,50,250,250,250,250,350,350];
+    @poz_left=[75,375,375,375,450,600,675,525,825,825,900,825,0,75,225,150,525];
   end
 
   def contact
@@ -50,5 +33,11 @@ class PagesController < ApplicationController
   	if order_by != ""
   		@deals = Coupon.order("#{order_by} DESC").limit(10)
   	end
+  end
+
+  def deal
+    @deal = Coupon.find(params[:id])
+    @deal.views += 1
+    @deal.save
   end
 end

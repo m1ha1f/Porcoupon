@@ -1,0 +1,19 @@
+<div class = "container dealdetails round">
+<h1><%= @deal.title %></h1>
+	<%= image_tag(@deal.image_url) %>
+	<p><%= @deal.text %></p>
+	<table>	
+		<tr>
+			<td>More details</td>
+			<td><%= link_to "Click",  @deal.deal_url %></td>
+		</tr>
+		<tr>
+			<td>Price</td>
+			<td><%= @deal.price.format %>
+		</tr>
+		<tr>
+			<td>Views</td>
+			<td><%= @deal.views %></td>
+		</tr>
+	</table>
+</div>

@@ -7,6 +7,7 @@ gem 'rails', '3.2.1'
 
 gem 'pg'
 gem 'money', '5.0.0'
+gem 'bcrypt-ruby'
 
 group :development do
   gem 'rspec-rails', '2.8.0 '

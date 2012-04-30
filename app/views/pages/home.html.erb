@@ -1,28 +1,38 @@
 <div id="js-container">
-<% @deals.each_with_index do |d, i| %>
-	<div class = "js-image size-<%= @dims[i] %>"
-    style="top: <%= @poz_top[i] %>px; left: <%= @poz_left[i] %>px;" >
-    <a href='#wolf!'>
-        <img class='js-small-image' src="<%= d.image_url  %>" />
-    </a>
-    <div class='js-small-caption'>
-        <span> <%= d.title %> </span>
+    <% @deals.each_with_index do |d, i| %>
+        <div class = "js-image size-<%= @dims[i] %>"
+        style="top: <%= @poz_top[i] %>px; left: <%= @poz_left[i] %>px;" >
+        <a href='#wolf!'>
+            <img class='js-small-image' src="<%= d.image_url  %>" />
+        </a>
+        <div class='js-small-caption'>
+            <span> <%= d.title %> </span>
+        </div>
+        <div class='js-overlay-caption-content'> 
+            <h4> <%= d.title %> </h4>
+       
+        <p><h4>Description</h4></p>
+        <p><%= trimm( d.text, 200 ) %></p>
+       
+        <p>
+          <h4><%= raw ("Price:&nbsp;"+d.price+"&#36;") unless d.price = "" %></h4>
+        </p>
+        <p>
+            <%= link_to "Read more", deal_path + "?id=#{d.id}"   %>
+        </p>
+        </div>
     </div>
-    <div class='js-overlay-caption-content'> 
-        <h4> <%= d.title %> </h4>
-   
-    <p><h4>Description</h4></p>
-    <p><%= d.text %></p>
-    <p><h4>Details</h4></p>
-    <p><%= d.text %></p>
-   
-    <p>
-      <h4>Price:&nbsp;<%= d.price %>&#36;</h4>
-    </p>
-    <p>
-        <a href='#'>Read more &raquo;</a>
-    </p>
-    </div>
+    <% end %>
 </div>
-<% end %>
-</div>
+<script type="text/javascript">
+        $(document).ready(function(){
+
+            $('#js-container').jsquares();
+            $('#js-container-2').jsquares({
+                js_shuffle_in: false, // have the pictures all fade in on page load?
+                js_fade_on_hover: false, // do we want the images to fade on hover or just change opacity?
+                js_caption_slide_down: false // do we want the caption to slide down or just appear?
+            });
+            
+        });
+</script>

@@ -4,10 +4,9 @@
 #
 #  id          :integer         not null, primary key
 #  title       :string(255)
-#  text        :text(255)
+#  text        :text
 #  image_url   :string(255)
 #  deal_url    :string(255)
-#  store_url   :string(255)
 #  start_at    :datetime
 #  end_at      :datetime
 #  price       :integer
@@ -27,6 +26,24 @@ class Coupon < ActiveRecord::Base
 	belongs_to :city
 	belongs_to :store
 	belongs_to :category
+
+	def trimmed_text
+		s = ""
+		v = text.split()
+		index = 0
+		while index < v.length && s.length + v[index].length < 200
+			s += v[index]
+		end
+		return s	
+	end
+
+	def formatted_price
+		if price.nil? || price == ""
+			return "unknown"
+		end
+		raise price
+		return price.to_s
+	end
 
 	composed_of :price,
               :class_name => 'Money',

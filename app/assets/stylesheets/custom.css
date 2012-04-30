@@ -2,6 +2,10 @@
   width:75%;
 }
 
+.content {
+  margin-top: 1em;
+}
+
 body {
   background: rgb(119, 225, 243);
   background-image: url('bg6.jpg');
@@ -9,25 +13,18 @@ body {
 
 header {
   width: 100%;
-  padding-top: 15px;
   background: rgb(119, 225, 243);
   background-image: url('menu-texture.jpg');
-  margin-left: auto;
-  margin-right: auto;
 }
 
 header img {
   padding: 0.7em;
-  margin-top: -20px;
-  margin-left: 10px;
-  margin-bottom: 3em;
 }
 
 section {
   margin-top: 1em;
   font-size: 120%;
   padding: 20px;
-  background: #fff;
   overflow: hidden;
 }
 
@@ -58,7 +55,7 @@ a:visited {
     float: right;
     clear: right;
     margin-right: 1em;
-    margin-top: 3em;
+    margin-top: 1em;
 }
 
 .footer-menu nav {
@@ -111,7 +108,7 @@ a.signup_button {
     float:right;
     clear:right;
     margin-right: 1em;
-    margin-top: -3em;
+    margin-top: -2.7em;
     padding: 0.7em;
     font-size: 1.5em;
 }
@@ -292,6 +289,23 @@ div.field, div.actions {
     max-width: 100px;
     float:left; 
     margin: 5px; 
+  }
+  
+  .dealdetails{
+    background: white;
+    padding: 2em;
+  }
+  
+  .dealdetails img{
+    max-height: 150px;
+    max-width: 150px;
+    float:left; 
+    margin: 5px; 
+  }
+  
+  .userdetail{
+    background: white;
+    padding: 2em;
   }
 
   

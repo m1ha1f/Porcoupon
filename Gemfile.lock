@@ -30,6 +30,7 @@ GEM
       multi_json (~> 1.0)
     annotate (2.4.1.beta1)
     arel (3.0.2)
+    bcrypt-ruby (3.0.1-x86-mingw32)
     builder (3.0.0)
     coffee-rails (3.2.2)
       coffee-script (>= 2.2.0)
@@ -58,8 +59,8 @@ GEM
       i18n (~> 0.4)
       json
     multi_json (1.2.0)
-    nokogiri (1.5.2)
-    pg (0.13.2)
+    nokogiri (1.5.2-x86-mingw32)
+    pg (0.13.2-x86-mingw32)
     polyglot (0.3.3)
     rack (1.4.1)
     rack-cache (1.2)
@@ -122,8 +123,12 @@ GEM
       rack (>= 1.0)
       rack-test (>= 0.5.3)
 
+PLATFORMS
+  x86-mingw32
+
 DEPENDENCIES
   annotate (= 2.4.1.beta1)
+  bcrypt-ruby
   coffee-rails (~> 3.2.1)
   jquery-rails (= 2.0.1)
   money (= 5.0.0)
