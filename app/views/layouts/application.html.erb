@@ -3,9 +3,13 @@
 <head>
   <title><%= full_title(@title) %></title>
   <%= render 'layouts/stylesheets' %>
+  <% if Rails.env.development? %>
   <%= javascript_include_tag "jquery-1.7.2.min" %>
   <%= javascript_include_tag "jquery.hoverintent.min" %>
-  <%= javascript_include_tag "jquery.jsquares.min" %>  
+  <%= javascript_include_tag "jquery.jsquares.min" %>
+  <% else %>
+  <%= javascript_include_tag "japplication" %>
+  <% end %>
   <%= csrf_meta_tags %>
 </head>
 <body>
