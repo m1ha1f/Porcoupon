@@ -7,6 +7,7 @@ Porcoupon::Application.routes.draw do
   match "/about", to: "pages#about"
   match "/tops", to: "pages#tops" 
   match "/deal", to: "pages#deal"
+  match "/search", to: "pages#search"
   match "/signup", to: "users#new"
   match "/signin", to: "sessions#new"
   match '/signout', :to => "sessions#destroy"
