@@ -1,0 +1,13 @@
+
+<% @coupons = Coupon.where("to_tsvector('english', coalesce(title, '') || ' ' || coalesce(text, '')) @@ to_tsquery('english','#{ parseQuery( params[:search] ) }')")%>
+
+<% if !@coupons.nil? then %>	
+	<% @coupons.each do |c| %>
+		<div class="container round userdetail actions">
+			<h5><b><%= c.title %></b></h5>
+			<%= raw( trimm( c.text, 250 ).gsub(/\n/, "</br>") ) %>
+			<h5><b><%= link_to("Read More!", c.deal_url) %></b></h5>
+		</div>
+	<% end %>
+<% end %>
+
