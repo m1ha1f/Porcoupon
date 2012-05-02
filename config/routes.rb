@@ -3,7 +3,6 @@ Porcoupon::Application.routes.draw do
   resources :sessions,      :only => [:new, :create, :destroy]
 
   root to: "pages#home"
-<<<<<<< HEAD
   match "/contact", to: "pages#contact"
   match "/about", to: "pages#about"
   match "/tops", to: "pages#tops" 
@@ -11,14 +10,6 @@ Porcoupon::Application.routes.draw do
   match "/signup", to: "users#new"
   match "/signin", to: "sessions#new"
   match '/signout', :to => "sessions#destroy"
-=======
-  match "contact", to: "pages#contact"
-  match "about", to: "pages#about"
-  match "tops", to: "pages#tops" 
-  match "deal", to: "pages#deal"
-  match "search", to: "pages#search"
-  match "signup", to: "users#new"
->>>>>>> db864fd086e7a50299a703641dd74f29ee1b9461
   
   # The priority is based upon order of creation:
   # first created -> highest priority.
