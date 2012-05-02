@@ -6,9 +6,10 @@
       <li ><%= link_to "Tops", tops_path+"?by=views", :class => "blue" %></li>
       <% if signed_in? %>
         <li><%= link_to "Profile", current_user %></li>
+        <li><%= link_to "Sign out", signout_path, :class => "red" %></li>
       <% else %>
         <li><%= link_to "Sign up", signup_path %></li>
-        <li><%= link_to "Sign in", "#" %></li>
+        <li><%= link_to "Sign in", signin_path %></li>
       <% end %>
     </ul>
   </nav>

@@ -1,0 +1,17 @@
+<div class="container">
+      <% flash.each do |key, value| %>
+         <div class="flash <%= key %>"><%= value %></div>
+      <% end %>
+<table class="profile" summary="Profile information">
+  <tr>
+    <td class="main">
+      <h1>
+        <%= @user.name %>
+    </td>
+    <td class="sidebar round">
+      <strong>Name</strong> <%= @user.name %><br />
+      <strong>URL</strong> <%= link_to user_path(@user), @user %><br />
+    </td>
+  </tr>
+</table>
+</div>

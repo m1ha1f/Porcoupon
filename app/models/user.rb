@@ -33,9 +33,25 @@ class User < ActiveRecord::Base
                        :confirmation => true,
                        :length => { :within => 6..40 }
 
+  def has_password?(submitted_password)
+    encrypted_password == encrypt(submitted_password)
+  end
+
+  class << self
+    def authenticate(email, submitted_password)
+      user = find_by_email(email)
+      (user && user.has_password?(submitted_password)) ? user : nil
+    end
+    
+    def authenticate_with_remember_token(id, cookie_remember_token)
+      user = find_by_id(id)
+      (user && user.remember_token == cookie_remember_token) ? user : nil
+    end
+  end
+
   private
 
-     def encrypt_password
+    def encrypt_password
       self.remember_token = SecureRandom.urlsafe_base64
       self.encrypted_password = encrypt(password)
     end

@@ -1,5 +1,9 @@
 class UsersController < ApplicationController
 
+  include SessionsHelper 
+
+  before_filter :correct_user
+
   def new
   	@title = "Sign up"
   	@user = User.new
@@ -15,5 +19,17 @@ class UsersController < ApplicationController
       render 'new'
     end
   end
+
+  def show
+    @user = User.find(params[:id])
+    @title = @user.name
+  end
+
+   private
+
+    def correct_user
+      @user = User.find(params[:id])
+      redirect_to(signin_path) unless current_user?(@user)
+    end
 
 end
