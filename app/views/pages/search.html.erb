@@ -1,0 +1,22 @@
+
+<% @coupons = Coupon.where("to_tsvector('english', coalesce(title, '') || ' ' || coalesce(text, '')) @@ to_tsquery('english','#{ parseQuery( params[:search] ) }')")%>
+
+<% if !@coupons.empty? then %>	
+	<% @coupons.each do |c| %>
+		<div class="container round userdetail actions">
+			<table><tr>
+				<td><%= image_tag(c.image_url) %></td>
+				<td>
+				<h5><b><%= link_to( c.title, deal_path(:id => c.id) ) %></b></h5>
+				<%= raw( trimm( c.text, 250 ).gsub(/\n/, "</br>") ) %>
+				<h5><b><%= link_to( "Read more!", deal_path(:id => c.id) ) %></b></h5>
+				</td>
+			</tr></table>
+		</div>
+	<% end %>
+<% else %>
+	<div class="container round userdetail actions">
+		<p>No such coupons!</p>
+	</div>
+<% end %>
+
