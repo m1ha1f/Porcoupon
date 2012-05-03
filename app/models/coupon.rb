@@ -27,13 +27,15 @@ class Coupon < ActiveRecord::Base
 	belongs_to :store
 	belongs_to :category
 
-	def trimmed_text
+	def trimmed_text(charNo)
 		s = ""
 		v = text.split()
 		index = 0
-		while index < v.length && s.length + v[index].length < 200
+		while index < v.length && s.length + v[index].length < charNo
 			s += v[index]
+			index += 1
 		end
+		s += "..." if index < v.length
 		return s	
 	end
 

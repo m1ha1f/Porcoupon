@@ -1,7 +1,4 @@
 class UsersController < ApplicationController
-
-  include SessionsHelper 
-
   before_filter :correct_user, :only => [:show]
 
   def new

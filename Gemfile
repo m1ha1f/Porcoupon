@@ -8,6 +8,9 @@ gem 'rails', '3.2.1'
 gem 'pg'
 gem 'money', '5.0.0'
 gem 'bcrypt-ruby'
+gem 'faker'
+gem 'will_paginate'
+gem 'bootstrap-will_paginate'
 
 group :development do
   gem 'rspec-rails', '2.8.0 '
