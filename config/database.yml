@@ -28,4 +28,4 @@ production:
   timeout: 5000
   username: muritor
   password: 123parola
-  host: 188.25.230.128
+  host: 188.25.230.130
