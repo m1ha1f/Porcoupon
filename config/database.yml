@@ -8,9 +8,16 @@ development:
   database: postgres
   pool: 5
   timeout: 5000
-  username: postgres
-  password: Parola12#
-  host: localhost
+  username: muritor
+  password: 123parola
+  host: 188.25.230.130
+  # adapter: postgresql
+  # database: postgres
+  # pool: 5
+  # timeout: 5000
+  # username: postgres
+  # password: Parola12#
+  # host: localhost
 
 # Warning: The database defined as "test" will be erased and
 # re-generated from your development database when you run "rake".
