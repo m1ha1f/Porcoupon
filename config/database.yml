@@ -26,13 +26,6 @@ production:
   database: postgres
   pool: 5
   timeout: 5000
-  username: postgres
-  password: Parola12#
-  host: localhost
-  # adapter: postgresql
-  # database: postgres
-  # pool: 5
-  # timeout: 5000
-  # username: muritor
-  # password: 123parola
-  # host: 86.121.128.240
+  username: muritor
+  password: 123parola
+  host: 188.25.230.128
