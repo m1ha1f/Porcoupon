@@ -9,7 +9,7 @@
 				<td><%= image_tag(c.image_url) %></td>
 				<td>
 				<h5><b><%= link_to( c.title, deal_path(:id => c.id) ) %></b></h5>
-				<%= raw( c.trimmed_text(200).gsub(/\n/, "</br>") ) %>
+				<p><%= c.trimmed_text(400) %></p>
 				<h5><b><%= link_to( "Read more!", deal_path(:id => c.id) ) %></b></h5>
 				</td>
 			</tr></table>

@@ -29,10 +29,11 @@ class Coupon < ActiveRecord::Base
 
 	def trimmed_text(charNo)
 		s = ""
+		return "" if text.blank?
 		v = text.split()
 		index = 0
 		while index < v.length && s.length + v[index].length < charNo
-			s += v[index]
+			s += " " + v[index]
 			index += 1
 		end
 		s += "..." if index < v.length
