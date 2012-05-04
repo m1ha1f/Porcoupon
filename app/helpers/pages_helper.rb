@@ -17,4 +17,33 @@ module PagesHelper
       end
       return words
     end
+	
+	def getSomeWords_deal( text )
+		text = text.strip 
+		return "" if (text.nil?) || (text.empty?)
+		words = []
+		text.split("\n").each do |line|
+			line_cnt = line.gsub(/[^a-zA-Z]+/, ' ') 
+			line_cnt.split(/\s+/).each do |w|
+				next if w.empty?
+				w = w.downcase
+				words << w
+			end
+		end
+		
+		words = words.sort_by {|w| w.length}.reverse
+		return words[0]
+		#i = 0
+		#string = ""
+		#words.each do |w|
+		#	if string.empty? then
+		#		string = w
+		#	elsif i < 1 then
+		#		string += " || " + w
+		#	end
+		#	i += 1
+		#end
+		
+		#return string
+	end
 end

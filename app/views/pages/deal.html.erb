@@ -9,11 +9,24 @@
 		</tr>
 		<tr>
 			<td>Price</td>
-			<td><%= @deal.price.format %>
+			<td><%= @deal.price.format unless @deal.price = "" %>
 		</tr>
 		<tr>
 			<td>Views</td>
 			<td><%= @deal.views %></td>
 		</tr>
 	</table>
+</div>
+<div class = "container dealdetails round">
+	You might also be interested in
+	<% @coupons = Coupon
+      .where("title != '#{@deal.title}' AND (to_tsvector('english', coalesce(title, '') || ' ' 
+        || coalesce(text, '')) @@ to_tsquery('english','#{ parseQuery( getSomeWords_deal(@deal.title) ) }'))")
+		.order("views DESC").limit(5)
+	%>
+	<div class="container round userdetail actions">
+	<% @coupons.each do |c| %>
+			<p><%= link_to( c.title, deal_path(:id => c.id) ) %></p></br>
+	<% end %>
+	</div>
 </div>
