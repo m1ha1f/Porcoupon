@@ -7,6 +7,5 @@ class ApplicationController < ActionController::Base
 	def set_access_control_headers
 		headers['Access-Control-Allow-Origin'] = '*'
 		headers['Access-Control-Request-Method'] = '*'
-		headers['Access-Control-Allow-Headers'] = 'SOAPAction'	
 	end
 end

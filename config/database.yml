@@ -10,7 +10,7 @@ development:
   timeout: 5000
   username: muritor
   password: 123parola
-  host: 188.25.230.130
+  host: porcoupon.sql10.com
   # adapter: postgresql
   # database: postgres
   # pool: 5
@@ -35,4 +35,4 @@ production:
   timeout: 5000
   username: muritor
   password: 123parola
-  host: 188.25.230.130
+  host: porcoupon.sql10.com
