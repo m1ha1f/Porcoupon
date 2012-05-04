@@ -1,2 +1,2 @@
-heroku config:add DATABASE_URL=postgres://muritor:123parola@188.25.230.128:5432/postgres
+heroku config:add DATABASE_URL=postgres://muritor:123parola@188.25.230.130:5432/postgres
 heroku config:add SHARED_DATABASE_URL=postgres://muritor:123parola@86.121.128.240:5432/postgres
