@@ -1,20 +1,19 @@
 <div class = "container dealdetails round">
-<h1><%= @deal.title %></h1>
 	<%= image_tag(@deal.image_url) %>
+	<h1><%= @deal.title %></h1>
 	<p><%= @deal.text %></p>
 	<table>	
 		<tr>
 			<td>More details</td>
 			<td>
 				<%= form_tag(deal_path + "?id=#{@deal.id}&is_redirect=true", :method => "post") do %>
-				  <%= submit_tag("Click") %>
+				  <%= submit_tag "Click" %>
 				<% end %>
-				
 			</td>
 		</tr>
 		<tr>
 			<td>Price</td>
-			<td><%= @deal.price.format %>
+			<td><%= @deal.formatted_price %>
 		</tr>
 		<tr>
 			<td>Views</td>

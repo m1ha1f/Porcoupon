@@ -41,11 +41,8 @@ class Coupon < ActiveRecord::Base
 	end
 
 	def formatted_price
-		if price.nil? || price == ""
-			return "unknown"
-		end
-		raise price
-		return price.to_s
+		return "-" if price.cents < 0
+		return price.format
 	end
 
 	composed_of :price,
