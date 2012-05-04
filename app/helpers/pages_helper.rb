@@ -1,9 +1,9 @@
 module PagesHelper
 	
 	def parseQuery( query )
+      return if query.blank?
       query = query.strip # elimin blancurile de la inceputul si sfarsitul sirului
-      return if (query.nil?) || (query.empty?)
-    
+          
       words = "" # query string for ts_query
       
       query = query.gsub(/[^a-zA-Z0-9 ]+/, '') # elimin orice caracter care nu este litera si il inlocuiesc cu blanc

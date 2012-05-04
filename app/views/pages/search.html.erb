@@ -1,22 +1,40 @@
 
+<% if !@tops.nil? %>
+	<div class="topsdiv">
+		<%= link_to "Most viewed", search_path+"?tops=views" %>
+		<%= link_to "Most bought", search_path+"?tops=redirects" %>
+	</div>
+<% end %>
+
 <% if !@coupons.empty? then %>
-	
-	<%= will_paginate @coupons %>
+	<% if @tops.nil? %>
+		<%= will_paginate @coupons %>
+	<%end%>
+	<br/>
 
 	<% @coupons.each do |c| %>
-		<div class="container round userdetail actions">
-			<table><tr>
-				<td><%= image_tag(c.image_url) %></td>
-				<td>
+		<div class="container round searchresult">
+			
+				<%= image_tag(c.image_url) %>
+				
 				<h5><b><%= link_to( c.title, deal_path(:id => c.id) ) %></b></h5>
 				<p><%= c.trimmed_text(400) %></p>
-				<h5><b><%= link_to( "Read more!", deal_path(:id => c.id) ) %></b></h5>
-				</td>
-			</tr></table>
+
+				<h5 class="readmore"><b>
+					<% if @tops.nil? %>
+					<%= link_to( "Read more!", deal_path(:id => c.id) ) %>
+					<%elsif @tops == :views %>
+						Views: <%= c.views %>
+					<%else %>
+						Redirects: <%= c.redirects %>
+					<%end%>
+				</b></h5>
+				
 		</div>
 	<% end %>
-
-	<%= will_paginate @coupons %>
+	<% if @tops.nil? %>
+		<%= will_paginate @coupons %>
+	<% end %>
 
 <% else %>
 	<div class="container round userdetail actions">

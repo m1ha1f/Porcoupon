@@ -20,23 +20,6 @@ class PagesController < ApplicationController
   	@title = "About"
   end
 
-  def tops
-  	order_by = ""
-  	if params[:by] == "views"
-  		@title = "Most viewed"
-  		order_by = "views"
-      @criteria = "Views"
-  	elsif params[:by] == "redirects"
-  		@title = "Most bought"
-  		order_by = "redirects"
-  	  @criteria = "Redirects"
-    end
-  	@deals = []
-  	if order_by != ""
-  		@deals = Coupon.order("#{order_by} DESC").limit(10)
-  	end
-  end
-
   def deal
     @deal = Coupon.find(params[:id])
     @deal.views += 1
@@ -44,9 +27,21 @@ class PagesController < ApplicationController
   end
 
   def search
-    @coupons = Coupon
-      .where("to_tsvector('english', coalesce(title, '') || ' ' 
-        || coalesce(text, '')) @@ to_tsquery('english','#{ parseQuery( params[:search] ) }')")
-      .paginate(:page => params[:page], :per_page => 5)
+    @deals = []
+    if params[:tops] == "views"
+      @title = "Most viewed"
+      @coupons = Coupon.order("views DESC").limit(10)
+      @tops = :views
+    elsif params[:tops] == "redirects"
+      @title = "Most bought"
+      @coupons = Coupon.order("redirects DESC").limit(10)
+      @tops = :redirects
+    else
+      @title = "Search results"
+      @coupons = Coupon
+        .where("to_tsvector('english', coalesce(title, '') || ' ' 
+          || coalesce(text, '')) @@ to_tsquery('english','#{ parseQuery( params[:search] ) }')")
+        .paginate(:page => params[:page], :per_page => 10)
+    end
   end
 end

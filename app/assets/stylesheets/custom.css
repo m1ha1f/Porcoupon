@@ -1,5 +1,6 @@
 .container {
   width:75%;
+  background-color: #F6F6F6;
 }
 
 .content {
@@ -7,8 +8,7 @@
 }
 
 body {
-  background: rgb(119, 225, 243);
-  background-image: url('bg6.jpg');
+  background: #191D34;
 }
 
 header {
@@ -105,12 +105,36 @@ a.signup_button {
 
 /* Search */
 .search {
+
     float:right;
     clear:right;
     margin-right: 1em;
     margin-top: -2.7em;
     padding: 0.7em;
     font-size: 1.5em;
+}
+
+.searchresult {
+  padding: 10px 5px 5px 5px;
+  margin-top: 1em;
+  margin-bottom: 1em;
+  height: 220px;
+  position: relative;
+}
+
+.searchresult img {
+    float: left;
+    margin: 1em;
+    min-width:200px;
+    max-width: 350px;
+    max-height: 200px;
+    min-height: 150px;
+}
+
+.readmore {
+  bottom: 1em;
+  right: 2em;
+  position: absolute;
 }
 
 /* Round corners */
@@ -292,7 +316,6 @@ div.field, div.actions {
   }
   
   .dealdetails{
-    background: white;
     padding: 2em;
   }
   
@@ -304,24 +327,97 @@ div.field, div.actions {
   }
   
   .userdetail{
-    background: white;
     padding: 2em;
+    color: #323547;
   }
 
 /* Pagination */
-.pagination li{
-  display: inline;
-  list-style-type: none;
-  padding-right: 20px;
+ .pagination {
+        font-size: 11px;
+        float: right;
+        margin: 0;
+        padding: 3px 0 4px;
+    }
+        .pagination a,
+        .pagination span {
+            padding: 3px 3px 2px;
+        }
+        .pagination .disabled {
+            background:none repeat scroll 0 0 transparent;
+            border:medium none;
+            color:#999999;
+            cursor:default;
+        }
+        .pagination a {
+            color:#3B5998;
+            cursor:pointer;
+            text-decoration:none;
+        }
+        .pagination a:hover {
+            background-color:#3B5998;
+            border-bottom:1px solid #3B5998;
+            border-color:#D8DFEA #D8DFEA #3B5998;
+            color:#FFFFFF;
+            text-decoration:none;
+        }
+        .pagination .current {}
+            .pagination .current {
+                border-bottom:2px solid #3B5998;
+                border-color:#3B5998;
+                color:#3B5998;
+                font-weight:bold;
+                padding-left:2px;
+                padding-right:2px;
+            }
+            .pagination .current a:hover {
+                background-color:#3B5998;
+                color:#FFFFFF;
+            }
+
+        .pagination .prev_page {
+
+        }
+        .pagination .next_page {
+        }
+
+.pagination ul {
+list-style-type:none;
+margin:0;
+padding:0;
+text-align:left;
 }
-.pagination { 
-  padding: 3px; 
-  margin-left:auto; 
-  margin-right:auto;
-} 
-.pagination a { padding: 2px 5px 2px 5px; margin: 2px; border: 1px solid #aaaadd; text-decoration: none; color: #ffffff; } 
-.pagination a:hover, 
-.pagination a:active { border: 1px solid #000099; color: #000; } 
-.pagination span.current { padding: 2px 5px 2px 5px; margin: 2px; border: 1px solid #000099; font-weight: bold; background-color: #000099; color: #FFF; } 
-.pagination span.disabled { padding: 2px 5px 2px 5px; margin: 2px; border: 1px solid #eee; color: #ddd; }
+
+.pagination ul li {
+  float: left;
+}
+
+.pagination {
+  right: 12.5%;
+  position: absolute;
+}
+
+.topsdiv
+{
+  width:300px;
+  margin-left: auto;
+  margin-right: auto;
+  font-weight: bold;
+}
+
+.topsdiv a {
+  padding: 0.6em;
+}
+
+
+.formbutton {
+  padding: 5px 8px 5px 8px;  
+  color: white;
+  font-weight: bold;
+  background-color: #191D34;
+}
+
+.formbutton:hover {
+  background-color: #191D50;
+}
+
 

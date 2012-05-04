@@ -3,7 +3,7 @@
   <nav class="menu" >
     <ul class="cbdb-menu">
       <li ><%= link_to "Home", root_path, :class => "blue" %></li>
-      <li ><%= link_to "Tops", tops_path+"?by=views", :class => "blue" %></li>
+      <li ><%= link_to "Tops", search_path+"?tops=views", :class => "blue" %></li>
       <% if signed_in? %>
         <li><%= link_to "Profile", current_user %></li>
         <li><%= link_to "Sign out", signout_path, :class => "red" %></li>
@@ -16,8 +16,7 @@
   <br/>
   <div class="search">
 	<%= form_tag(search_path, :method => "get") do %>
-	  <%= label_tag(:search, "Search for:") %>
-	  <%= text_field_tag :search, "", :class => "yellow round" %>
+	  <%= text_field_tag :search, "", :class => "round", :style => "width: 200px" %>
 	  <%= submit_tag("Search", :class => "yellow round", :style => "width: 100px") %>
 	<% end %>
   <div>
