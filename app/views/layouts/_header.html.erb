@@ -15,7 +15,7 @@
   </nav>
   <br/>
   <div class="search">
-	<%= form_tag(search_path, :method => "get") do %>
+	<%= form_tag(search_path, :method => "post") do %>
 	  <%= text_field_tag :search, "", :class => "round", :style => "width: 200px" %>
 	  <%= submit_tag("Search", :class => "yellow round", :style => "width: 100px") %>
 	<% end %>

@@ -5,7 +5,12 @@
 	<table>	
 		<tr>
 			<td>More details</td>
-			<td><%= link_to "Click",  @deal.deal_url %></td>
+			<td>
+				<%= form_tag(deal_path + "?id=#{@deal.id}&is_redirect=true", :method => "post") do %>
+				  <%= submit_tag("Click") %>
+				<% end %>
+				
+			</td>
 		</tr>
 		<tr>
 			<td>Price</td>
@@ -14,6 +19,14 @@
 		<tr>
 			<td>Views</td>
 			<td><%= @deal.views %></td>
+		</tr>
+		<tr>
+			<td>Redirects</td>
+			<td><%= @deal.redirects %></td>
+		</tr>
+		<tr>
+			<td>Expires on</td>
+			<td><%= @deal.end_at.to_s %></td>
 		</tr>
 	</table>
 </div>
