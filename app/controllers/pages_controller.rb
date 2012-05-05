@@ -23,6 +23,12 @@ class PagesController < ApplicationController
   def deal
     @deal = Coupon.find(params[:id])
     @comments = @deal.comments.to_a
+
+    @related_coupons = Coupon
+      .where("title != '#{@deal.title.gsub(/\\/, '\&\&').gsub(/'/, "''")}' AND (to_tsvector('english', coalesce(title, '') || ' ' 
+        || coalesce(text, '')) @@ to_tsquery('english','#{ parseQuery( getSomeWords_deal(@deal.title) ) }'))")
+      .order("views DESC").limit(5)
+
     if params[:is_redirect]
       @deal.redirects += 1
       redirect_to @deal.deal_url
@@ -48,6 +54,26 @@ class PagesController < ApplicationController
         .where("to_tsvector('english', coalesce(title, '') || ' ' 
           || coalesce(text, '')) @@ to_tsquery('english','#{ parseQuery( params[:search] ) }')")
         .paginate(:page => params[:page], :per_page => 10)
+
+      searchType = :basicSearch
+      if !params[:advanced_search].blank? && !params[:advanced_search][:city_id].blank? then
+        searchType = :searchByCity
+      end
+      
+      if searchType == :basicSearch then
+        @coupons = Coupon
+          .where("to_tsvector('english', coalesce(title, '') || ' ' 
+          || coalesce(text, '')) @@ to_tsquery('english','#{ parseQuery( params[:search] ) }')")
+          .paginate(:page => params[:page], :per_page => 5)
+      elsif searchType == :searchByCity then
+        @coupons = Coupon
+          .where("coupons.city_id = #{params[:advanced_search][:city_id]} AND (to_tsvector('english', coalesce(title, '') || ' ' 
+          || coalesce(text, '')) @@ to_tsquery('english','#{ parseQuery( params[:search] ) }'))")
+          .paginate(:page => params[:page], :per_page => 5)
+      end
     end
+
+	
+
   end
 end
