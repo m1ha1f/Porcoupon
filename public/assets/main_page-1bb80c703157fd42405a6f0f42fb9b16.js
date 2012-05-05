@@ -1,1 +1,0 @@
-$(document).ready(function(){$("#js-container").jsquares(),$("#js-container-2").jsquares({js_shuffle_in:!1,js_fade_on_hover:!1,js_caption_slide_down:!1})});
