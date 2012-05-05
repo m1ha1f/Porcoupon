@@ -27,6 +27,8 @@ class Coupon < ActiveRecord::Base
 	belongs_to :store
 	belongs_to :category
 
+	has_many :comments
+
 	def trimmed_text(charNo)
 		s = ""
 		return "" if text.blank?

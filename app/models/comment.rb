@@ -3,7 +3,7 @@
 # Table name: comments
 #
 #  id         :integer         not null, primary key
-#  store_id   :integer
+#  coupon_id  :integer
 #  rating     :integer
 #  user_id    :integer
 #  text       :text
@@ -14,5 +14,5 @@
 
 class Comment < ActiveRecord::Base
 	belongs_to :user
-	belongs_to :store
+	belongs_to :coupon
 end

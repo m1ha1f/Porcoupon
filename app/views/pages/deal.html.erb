@@ -29,3 +29,22 @@
 		</tr>
 	</table>
 </div>
+
+<div class="comments">
+	<h2>Comments</h1>
+	<% if signed_in? %>
+		<%= form_tag(comments_path + "?coupon_id=#{@deal.id}", :method => "post", :remote => true) do |f| %>
+			<%= text_field_tag :text %>
+			<%= submit_tag "Add comment", :class => "formbutton" %>
+		<% end %>
+	<% end %>
+	<% if @comments.empty? %>
+		<p>No comments</p>
+	<% else %>
+		<% @comments.each do |comment| %>
+			<div class="comment">
+				<p><%= comment.text %></p>
+			</div>
+		<% end %>
+	<% end %>
+</div>

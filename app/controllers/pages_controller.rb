@@ -22,6 +22,7 @@ class PagesController < ApplicationController
 
   def deal
     @deal = Coupon.find(params[:id])
+    @comments = @deal.comments.to_a
     if params[:is_redirect]
       @deal.redirects += 1
       redirect_to @deal.deal_url

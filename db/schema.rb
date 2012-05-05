@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120430134643) do
+ActiveRecord::Schema.define(:version => 20120504232331) do
 
   create_table "categories", :force => true do |t|
     t.string   "name"
@@ -27,7 +27,7 @@ ActiveRecord::Schema.define(:version => 20120430134643) do
   end
 
   create_table "comments", :force => true do |t|
-    t.integer  "store_id"
+    t.integer  "coupon_id"
     t.integer  "rating"
     t.integer  "user_id"
     t.text     "text"
@@ -58,6 +58,18 @@ ActiveRecord::Schema.define(:version => 20120430134643) do
     t.datetime "created_at",  :null => false
     t.datetime "updated_at",  :null => false
     t.string   "currency"
+  end
+
+  create_table "offer", :force => true do |t|
+    t.string   "title",      :limit => 200,                                 :null => false
+    t.string   "text",       :limit => 2000
+    t.string   "imgurl",     :limit => 500
+    t.string   "storeurl",   :limit => 500
+    t.datetime "startat"
+    t.datetime "endat"
+    t.decimal  "price",                      :precision => 19, :scale => 2
+    t.integer  "categoryid"
+    t.integer  "locationid"
   end
 
   create_table "states", :force => true do |t|

@@ -321,8 +321,8 @@ div.field, div.actions {
   }
   
   .dealdetails img{
-    max-height: 150px;
-    max-width: 150px;
+    max-height: 300px;
+    max-width: 400px;
     float:left; 
     margin: 1em;
   }
@@ -425,5 +425,19 @@ text-align:left;
 .formbutton:hover {
   background-color: #191D50;
 }
+
+/* Comments */
+.comments {
+  
+}
+
+.comment {
+  background-color: white;
+  width: 600px;
+  height: 150px;
+  margin-top: 1em;
+  margin-bottom: 1em;
+}
+
 
 

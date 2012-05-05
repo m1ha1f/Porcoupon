@@ -8,7 +8,7 @@ end
 # Table name: comments
 #
 #  id         :integer         not null, primary key
-#  store_id   :integer
+#  coupon_id  :integer
 #  rating     :integer
 #  user_id    :integer
 #  text       :text
