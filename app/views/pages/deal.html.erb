@@ -39,27 +39,27 @@
 	<div class="fb-like" data-href="http://porcoupon.heroku.com/deal?id=<%= @deal.id %>" data-send="false" data-width="450" data-show-faces="true"></div>
 
 </div>
+<% if !@related_coupons.empty? then %>
+	<div id="wrap">
+		<p>You might also be interested in</p>
+		<ul class="round2">
+		<% @related_coupons.each do |c| %>
+					<li>
+						<%= link_to image_tag(c.image_url, :alt => "Porcoupon", :class => "round", :style => "opacity: 1; max-height: 200px; max-width: 250px; border:6px solid black;"), deal_path(:id => c.id), :title => c.title %>
 
-<div id="wrap">
-	<p>You might also be interested in</p>
-	<ul class="round2">
-	<% @related_coupons.each do |c| %>
-				<li>
-					<%= link_to image_tag(c.image_url, :alt => "Porcoupon", :class => "round", :style => "opacity: 1; max-height: 200px; max-width: 250px; border:6px solid black;"), deal_path(:id => c.id), :title => c.title %>
-
-				</li>
-	<% end %>
-	</ul>
-	
-	<script type="text/javascript">
-			
-			$(document).ready(function() {
-				$('.round2').roundabout();
-			});
+					</li>
+		<% end %>
+		</ul>
 		
-		</script>
-</div>
-
+		<script type="text/javascript">
+				
+				$(document).ready(function() {
+					$('.round2').roundabout();
+				});
+			
+			</script>
+	</div>
+<% end %>
 
 
 <div class="comments round">
@@ -91,15 +91,4 @@
 		<% will_paginate @comments %>
 		<% end %>
 	<% end %>
-
-<% if !@related_coupons.empty? then %>
-	<div class = "container dealdetails round">
-		You might also be interested in
-		<div class="container round userdetail actions">
-			<% @related_coupons.each do |c| %>
-					<p><%= link_to( c.title, deal_path(:id => c.id) ) %></p></br>
-			<% end %>
-		</div>
-	</div>
-<% end %>
 
