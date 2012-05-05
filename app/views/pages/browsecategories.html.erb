@@ -1,18 +1,13 @@
 <% if params[:category_id].blank? then %>
-	<table>
-		<% i = 0 %>
+	<ul>
 		<% @categories.each do |c| %>
-			<%= raw("<tr>") if i%2 == 0 %>
-			<% i = i + 1 %>
-			<td><div id = <%= c.name %> class = "container round searchresult">
-				<%= link_to( c.name, browsecategories_path(:category_id => c.id, :category => c.name) ) %>
-			</div></td>
-			<%= raw("</tr>") if i%2 == 0 %>
+			<li><%= link_to( c.name, browsecategories_path(:category_id => c.id, :category => c.name) ) %></li>
 		<% end %>
 	</table>
 <% else %>
-	<h1 class = "container round"><%= params[:category] %></h1></br>
+	<h1 ><%= params[:category] %></h1></br>
 	<%= will_paginate @results %>
+	<br/>
 	<% @results.each do |c| %>
 		<div class="container round searchresult">
 			
@@ -34,4 +29,5 @@
 		</div>
 	<% end %>
 	<%= will_paginate @results %>
+	<br/>
 <% end %>

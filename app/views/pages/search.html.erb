@@ -9,8 +9,6 @@
 		<%= label_tag(:advanced_search_category_id, "Select category:") %>
 		<%= select(:advanced_search, :category_id, Category.all.collect {|p|[p.name, p.id]}, {:include_blank => 'All categories', :selected => (!params[:advanced_search].blank? ? params[:advanced_search][:category_id] : 0)}) %>
 		</br>
-		<%= check_box(:advanced_search, :checkbox1) %>
-		</br>
 		<%= submit_tag("Search") %>
 	<% end %>
 </div></br>
@@ -34,7 +32,7 @@
 				<%= image_tag(c.image_url) %>
 				
 				<h5><b><%= link_to( c.title, deal_path(:id => c.id) ) %></b></h5>
-				<p><%= c.trimmed_text(200) %></p>
+				<span><%= c.trimmed_text(200) %></span>
 
 				<h5 class="readmore"><b>
 					<% if @tops.nil? %>

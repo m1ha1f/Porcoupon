@@ -23,7 +23,6 @@
             });
             
         });
-    
 </script>
 
 <input type="button" value="Reload all offers" onclick="btn_click()" />
@@ -57,17 +56,17 @@
                     "<p>"+args.text+"</p>"+
                     "<p>"+
                       "<p><h4>Price:&nbsp;"+args.price+"&#36;</h4></p> "+
-                      "<a href='#'>Read more &raquo;</a>"+
+                      "<a href='/deal?id="+args.id+"'>Read more &raquo;</a>"+
                     "</p>"
                 ));       
                
                 $(".js-image#div_"+i).append(
-                  "<a  href='#wolf!'>"+
+                  "<a  href='/deal?id="+args.id+"'>"+
                     "<img class='test1' class='js-small-image' src='"+args.image_url+"'/>"+
                   "</a>" +
-                  "<div class='js-small-caption'>"+
+                  ($(".js-image#div_"+i).is('.size-1')?"":"<div class='js-small-caption'>"+
                     "<span>"+args.title+"</span>"+
-                  "</div>",
+                  "</div>"),
                   newdiv
                 );
             }
@@ -83,4 +82,4 @@
         
       }       
  
-        </script>   
+</script>   

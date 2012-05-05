@@ -35,4 +35,4 @@ production:
   timeout: 5000
   username: muritor
   password: 123parola
-  host: http://porcoupon.sql10.com
+  host: 86.121.128.217
