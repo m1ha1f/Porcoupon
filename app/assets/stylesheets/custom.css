@@ -504,6 +504,10 @@ text-align:left;
    
    .roundabout-in-focus { cursor: auto; }
 
-#fb-root {
-  margin-left: 5em;
+.fbfooter {
+  background-color: white;
+  width: 600px;
+  height: 200px;
+  margin-left: auto;
+  margin-right: auto;
 }

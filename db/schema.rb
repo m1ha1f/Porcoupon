@@ -60,6 +60,67 @@ ActiveRecord::Schema.define(:version => 20120504232331) do
     t.string   "currency"
   end
 
+  create_table "couponsbak", :id => false, :force => true do |t|
+    t.integer  "id"
+    t.string   "title"
+    t.text     "text"
+    t.string   "image_url"
+    t.string   "deal_url"
+    t.datetime "start_at"
+    t.datetime "end_at"
+    t.integer  "price"
+    t.integer  "views"
+    t.integer  "redirects"
+    t.integer  "city_id"
+    t.integer  "country_id"
+    t.integer  "category_id"
+    t.integer  "store_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.string   "currency"
+  end
+
+  create_table "couponsbak2", :id => false, :force => true do |t|
+    t.integer  "id"
+    t.string   "title"
+    t.text     "text"
+    t.string   "image_url"
+    t.string   "deal_url"
+    t.string   "store_url"
+    t.datetime "start_at"
+    t.datetime "end_at"
+    t.integer  "price"
+    t.integer  "views"
+    t.integer  "redirects"
+    t.integer  "city_id"
+    t.integer  "country_id"
+    t.integer  "category_id"
+    t.integer  "store_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.string   "currency"
+  end
+
+  create_table "couponsbak3", :id => false, :force => true do |t|
+    t.integer  "id"
+    t.string   "title"
+    t.text     "text"
+    t.string   "image_url"
+    t.string   "deal_url"
+    t.datetime "start_at"
+    t.datetime "end_at"
+    t.integer  "price"
+    t.integer  "views"
+    t.integer  "redirects"
+    t.integer  "city_id"
+    t.integer  "country_id"
+    t.integer  "category_id"
+    t.integer  "store_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.string   "currency"
+  end
+
   create_table "offer", :force => true do |t|
     t.string   "title",      :limit => 200,                                 :null => false
     t.string   "text",       :limit => 2000
@@ -86,6 +147,12 @@ ActiveRecord::Schema.define(:version => 20120504232331) do
     t.string   "url"
   end
 
+  create_table "tmpoferte", :id => false, :force => true do |t|
+    t.string "status",              :limit => 10
+    t.string "announcementtitle",   :limit => 200
+    t.string "soldquantitymessage", :limit => 10
+  end
+
   create_table "trackings", :force => true do |t|
     t.integer  "user_id"
     t.integer  "coupon_id"
@@ -106,6 +173,10 @@ ActiveRecord::Schema.define(:version => 20120504232331) do
     t.integer  "user_type"
     t.string   "remember_token"
     t.string   "string"
+  end
+
+  create_table "v", :id => false, :force => true do |t|
+    t.datetime "now"
   end
 
 end

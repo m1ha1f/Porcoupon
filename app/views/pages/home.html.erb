@@ -2,7 +2,7 @@
     <% @deals.each_with_index do |d, i| %>
         <div class = "js-image size-<%= @dims[i] %>"
         style="top: <%= @poz_top[i] %>px; left: <%= @poz_left[i] %>px;" >
-        <%= link_to image_tag(d.image_url, :alt => "Porcoupon", :class => js-small-image'), 
+        <%= link_to image_tag(d.image_url, :alt => "Porcoupon", :class => 'js-small-image'), 
                 deal_path + "?id=#{d.id}" %>
         <div class='js-small-caption'>
             <span> <%= d.title %> </span>
@@ -23,8 +23,6 @@
     </div>
     <% end %>
 </div>
-
-<input type="button" value="click me" onclick="btn_click()" />
 
 <script type="text/javascript">
     
