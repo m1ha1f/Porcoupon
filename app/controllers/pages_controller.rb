@@ -95,4 +95,12 @@ class PagesController < ApplicationController
     end
 
   end
+
+  def browsecategories 
+    if !params[:category_id].blank? then
+      @results = Coupon.where("category_id = #{params[:category_id]}").paginate(:page => params[:page], :per_page => 10)
+    else
+      @categories = Category.all
+    end
+  end
 end

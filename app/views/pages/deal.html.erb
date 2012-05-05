@@ -48,13 +48,13 @@
 			</div>
 		<% end %>
 	<% end %>
-
-<div class = "container dealdetails round">
-	You might also be interested in
-	<div class="container round userdetail actions">
-	<% @related_coupons.each do |c| %>
-			<p><%= link_to( c.title, deal_path(:id => c.id) ) %></p></br>
-	<% end %>
+<% if !@related_coupons.empty? then %>
+	<div class = "container dealdetails round">
+		You might also be interested in
+		<div class="container round userdetail actions">
+			<% @related_coupons.each do |c| %>
+					<p><%= link_to( c.title, deal_path(:id => c.id) ) %></p></br>
+			<% end %>
+		</div>
 	</div>
-
-</div>
+<% end %>

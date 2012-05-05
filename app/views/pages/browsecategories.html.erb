@@ -1,0 +1,37 @@
+<% if params[:category_id].blank? then %>
+	<table>
+		<% i = 0 %>
+		<% @categories.each do |c| %>
+			<%= raw("<tr>") if i%2 == 0 %>
+			<% i = i + 1 %>
+			<td><div id = <%= c.name %> class = "container round searchresult">
+				<%= link_to( c.name, browsecategories_path(:category_id => c.id, :category => c.name) ) %>
+			</div></td>
+			<%= raw("</tr>") if i%2 == 0 %>
+		<% end %>
+	</table>
+<% else %>
+	<h1 class = "container round"><%= params[:category] %></h1></br>
+	<%= will_paginate @results %>
+	<% @results.each do |c| %>
+		<div class="container round searchresult">
+			
+			<%= image_tag(c.image_url) %>
+			
+			<h5><b><%= link_to( c.title, deal_path(:id => c.id) ) %></b></h5>
+			<p><%= c.trimmed_text(200) %></p>
+
+			<h5 class="readmore"><b>
+				<% if @tops.nil? %>
+				<%= link_to( "Read more!", deal_path(:id => c.id) ) %>
+				<%elsif @tops == :views %>
+					Views: <%= c.views %>
+				<%else %>
+					Redirects: <%= c.redirects %>
+				<%end%>
+			</b></h5>
+				
+		</div>
+	<% end %>
+	<%= will_paginate @results %>
+<% end %>
