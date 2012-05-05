@@ -1,9 +1,14 @@
 <div class = "container dealdetails round">
 	<%= form_tag(search_path, :method => "get") do %>
 		<%= label_tag(:search, "Search for:") %>
-		<%= text_field_tag(:search) %>
+		<%= text_field_tag(:search, (params[:search] or "")) %>
 		</br>
-		<%= select(:advanced_search, :city_id, City.all.collect {|p|[p.name, p.id]}, {:include_blank => 'All cities'}) %>
+		<%= label_tag(:advanced_search_city_id, "Select city:") %>
+		<%= select(:advanced_search, :city_id, City.all.collect {|p|[p.name, p.id]}, {:include_blank => 'All cities', :selected => (!params[:advanced_search].blank? ? params[:advanced_search][:city_id] : 0)}) %>
+		</br>
+		<%= label_tag(:advanced_search_category_id, "Select category:") %>
+		<%= select(:advanced_search, :category_id, Category.all.collect {|p|[p.name, p.id]}, {:include_blank => 'All categories', :selected => (!params[:advanced_search].blank? ? params[:advanced_search][:category_id] : 0)}) %>
+		</br>
 		<%= check_box(:advanced_search, :checkbox1) %>
 		</br>
 		<%= submit_tag("Search") %>
@@ -29,7 +34,7 @@
 				<%= image_tag(c.image_url) %>
 				
 				<h5><b><%= link_to( c.title, deal_path(:id => c.id) ) %></b></h5>
-				<p><%= c.trimmed_text(400) %></p>
+				<p><%= c.trimmed_text(200) %></p>
 
 				<h5 class="readmore"><b>
 					<% if @tops.nil? %>
