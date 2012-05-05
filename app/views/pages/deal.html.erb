@@ -28,26 +28,72 @@
 			<td><%= @deal.end_at.to_s %></td>
 		</tr>
 	</table>
+	<div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) return;
+  js = d.createElement(s); js.id = id;
+  js.src = "//connect.facebook.net/en_US/all.js#xfbml=1";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+	<div class="fb-like" data-href="http://porcoupon.heroku.com/deal?id=<%= @deal.id %>" data-send="false" data-width="450" data-show-faces="true"></div>
+
+</div>
+
+<div id="wrap">
+	<p>You might also be interested in</p>
+	<ul class="round2">
+	<% @related_coupons.each do |c| %>
+				<li>
+					<%= link_to image_tag(c.image_url, :alt => "Porcoupon", :class => "round", :style => "opacity: 1; max-height: 200px; max-width: 250px; border:6px solid black;"), deal_path(:id => c.id), :title => c.title %>
+
+				</li>
+	<% end %>
+	</ul>
+	
+	<%= javascript_include_tag "jquery" %>
+	<%= javascript_include_tag "jquery.roundabout" %>
+	<script type="text/javascript">
+			
+			$(document).ready(function() {
+				$('.round2').roundabout();
+			});
+		
+		</script>
 </div>
 
 
-<div class="comments">
-	<h2>Comments</h1>
+
+<div class="comments round">
+	<h2>Comments</h2>
 	<% if signed_in? %>
 		<%= form_tag(comments_path + "?coupon_id=#{@deal.id}", :method => "post", :remote => true) do |f| %>
-			<%= text_field_tag :text %>
+			<%= text_area_tag :text %>
+			<br/>
 			<%= submit_tag "Add comment", :class => "formbutton" %>
+
 		<% end %>
+	<%else%>
+		<%= link_to "Sign in", signin_path %>
+		or
+		<%= link_to "Sign up",signup_path %>
+		to post a comment
 	<% end %>
 	<% if @comments.empty? %>
 		<p>No comments</p>
 	<% else %>
+	    <% will_paginate @comments %>
 		<% @comments.each do |comment| %>
 			<div class="comment">
-				<p><%= comment.text %></p>
+				<span><%= comment.user.name %> wrote on <%= comment.created_at %></span>
+				<div>
+					<p><%= comment.text %></p>
+				</div>
 			</div>
+		<% will_paginate @comments %>
 		<% end %>
 	<% end %>
+
 <% if !@related_coupons.empty? then %>
 	<div class = "container dealdetails round">
 		You might also be interested in
@@ -58,3 +104,4 @@
 		</div>
 	</div>
 <% end %>
+

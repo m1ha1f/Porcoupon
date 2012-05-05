@@ -22,8 +22,7 @@ class PagesController < ApplicationController
 
   def deal
     @deal = Coupon.find(params[:id])
-    @comments = @deal.comments.to_a
-
+    @comments = @deal.comments.paginate(:page => params[:page], :per_page => 10)
     @related_coupons = Coupon
       .where("title != '#{@deal.title.gsub(/\\/, '\&\&').gsub(/'/, "''")}' AND (to_tsvector('english', coalesce(title, '') || ' ' 
         || coalesce(text, '')) @@ to_tsquery('english','#{ parseQuery( getSomeWords_deal(@deal.title) ) }'))")
