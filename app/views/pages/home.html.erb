@@ -1,31 +1,14 @@
 <div id="js-container">
-    <% @deals.each_with_index do |d, i| %>
+    <% 15.times do |i| %>
         <div class = "js-image size-<%= @dims[i] %>"
-        style="top: <%= @poz_top[i] %>px; left: <%= @poz_left[i] %>px;" >
-        <%= link_to image_tag(d.image_url, :alt => "Porcoupon", :class => 'js-small-image'), 
-                deal_path + "?id=#{d.id}" %>
-        <div class='js-small-caption'>
-            <span> <%= d.title %> </span>
+            id = "div_<%= i %>"
+            style="top: <%= @poz_top[i] %>px; left: <%= @poz_left[i] %>px; display: block;" >
         </div>
-        <div class='js-overlay-caption-content'> 
-            <h4> <%= d.title %> </h4>
-       
-        <p><h4>Description</h4></p>
-        <p><%= d.trimmed_text(200) %></p>
-       
-        <p>
-          <h4><%= raw ("Price:&nbsp;"+d.price+"&#36;") unless d.price = "" %></h4>
-        </p>
-        <p>
-            <%= link_to "Read more", deal_path + "?id=#{d.id}"   %>
-        </p>
-        </div>
-    </div>
     <% end %>
 </div>
 
 <script type="text/javascript">
-    
+         
         $(document).ready(function() {
 
             $('#js-container').jsquares();
@@ -35,20 +18,69 @@
                 js_caption_slide_down: false // do we want the caption to slide down or just appear?
             });
             
+            $(".js-image").each(function(i){
+                load(i);
+            });
+            
         });
     
 </script>
 
+<input type="button" value="Reload all offers" onclick="btn_click()" />
+
 <script type="text/javascript">
-        function btn_click() {
-            $.ajax({
-                type: "POST",
-                url: "/randomdeal",
-                contentType: "application/json; charset=utf-8",
-                dataType: "json",
-                success: function (args) {
-                    alert(args.text);
-                }
-            });
-        }  
-</script>
+    function btn_click()
+    {
+        for(var i = 0; i < 16; i++)
+            load(i);
+    }
+      function load(i)
+      {
+        $(".js-image#div_"+i).empty();
+        
+        $.ajax({
+            type: "POST",
+            url: "/randomdeal?i="+i,
+            contentType: "application/json; charset=utf-8",
+            dataType: "json",
+            success: function (args){
+                
+                newdiv = $("<div class='js-overlay-caption-content'></div>").attr("id", "div2_"+args.i);
+                a_close = $("<a class='test2' onclick='f("+args.i+");'></a>");
+                image_close = $("<img class='close_button' style='top:10px;position:absolute;right:5px;height:30px;width:30px' src='assets/close_btn.png'/>");
+                
+                a_close.append(image_close);
+                newdiv.append(a_close);
+                newdiv.append($('<div></div>').append(
+                    "<p><h4>"+args.title+"</p>"+
+                    "<p><h4>Details</h4></p>"+
+                    "<p>"+args.text+"</p>"+
+                    "<p>"+
+                      "<p><h4>Price:&nbsp;"+args.price+"&#36;</h4></p> "+
+                      "<a href='#'>Read more &raquo;</a>"+
+                    "</p>"
+                ));       
+               
+                $(".js-image#div_"+i).append(
+                  "<a  href='#wolf!'>"+
+                    "<img class='test1' class='js-small-image' src='"+args.image_url+"'/>"+
+                  "</a>" +
+                  "<div class='js-small-caption'>"+
+                    "<span>"+args.title+"</span>"+
+                  "</div>",
+                  newdiv
+                );
+            }
+        });
+    }
+    
+      function f(i)
+      {
+        $("#div_"+i).animate({"opacity":"0"}, 200);
+        $('.js-overlay-html').trigger('mouseout');
+        load (i);
+        $("#div_"+i).animate({"opacity":"1"}, 200);
+        
+      }       
+ 
+        </script>   
