@@ -34,7 +34,7 @@
 				<%= image_tag(c.image_url) %>
 				
 				<h5><b><%= link_to( c.title, deal_path(:id => c.id) ) %></b></h5>
-				<p><%= c.trimmed_text(200) %></p>
+				<span><%= c.trimmed_text(200) %></span>
 
 				<h5 class="readmore"><b>
 					<% if @tops.nil? %>
