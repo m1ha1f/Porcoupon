@@ -1,79 +1,65 @@
 <div id="js-container">
-    <% 15.times do |i| %>
-        <div class = "js-image size-<%= @dims[i] %>"
-            id = "div_<%= i %>"
-            style="top: <%= @poz_top[i] %>px; left: <%= @poz_left[i] %>px; display: block;" >
+    <% @deals.each_with_index do |deal, i| %>
+
+    <div class="js-image size-<%= @dims[i] %>" id = "div_<%= i %>"
+            style="top: <%= @poz_top[i] %>px; left: <%= @poz_left[i] %>px;">   
+        <%= link_to image_tag(deal.image_url, :alt => "Porcoupon", :class => "js-small-image"), 
+            deal.porcoupon_url %>
+        <div class="js-small-caption">
+          <span><%= deal.title%></span>
         </div>
-    <% end %>
+        <div class="js-overlay-caption-content">
+          
+          <h4><%= deal.title%></h4>
+          <p>
+            <%= deal.trimmed_text(200) %>
+          </p>
+          <%= link_to "Read more", deal.porcoupon_url %>
+          
+        </div>
+    </div>
+    <%end%>
 </div>
 
 <script type="text/javascript">
          
-        $(document).ready(function() {
-
-            $('#js-container').jsquares();
-            $('#js-container-2').jsquares({
-                js_shuffle_in: false, // have the pictures all fade in on page load?
-                js_fade_on_hover: false, // do we want the images to fade on hover or just change opacity?
-                js_caption_slide_down: false // do we want the caption to slide down or just appear?
+        $(document).ready(function() {          
+            $('#js-container').jsquares({
+                caption_height: 150
             });
-            
-            $(".js-image").each(function(i){
-                load(i);
-            });
-            
         });
 </script>
 
-<input class ="formbutton" type="button" value="Reload all offers" onclick="btn_click()" />
+<input class ="formbutton" type="button" value="Reload all offers" onclick="btn_click()" style="position:absolute; right:50px; margin-top:-5em;" />
+<br/>
 
 <script type="text/javascript">
     function btn_click()
     {
         for(var i = 0; i < 16; i++)
-            load(i);
+            reloadDeal(i);
     }
-      function load(i)
-      {
-        $(".js-image#div_"+i).empty();
-        
+
+    /*
+      Porcoupon ajax
+    */
+    function load(i)
+      {       
         $.ajax({
             type: "POST",
             url: "/randomdeal?i="+i,
             contentType: "application/json; charset=utf-8",
             dataType: "json",
             success: function (args){
-                
-                newdiv = $("<div class='js-overlay-caption-content'></div>").attr("id", "div2_"+args.i);
-                a_close = $("<a class='test2' onclick='f("+args.i+");'></a>");
-                image_close = $("<img class='close_button' style='top:10px;position:absolute;right:5px;height:30px;width:30px' src='assets/close_btn.png'/>");
-                
-                a_close.append(image_close);
-                newdiv.append(a_close);
-                newdiv.append($('<div></div>').append(
-                    "<p><h4>"+args.title+"</p>"+
-                    "<p><h4>Details</h4></p>"+
-                    "<p>"+args.text+"</p>"+
-                    "<p>"+
-                      "<p><h4>Price:&nbsp;"+args.price+"&#36;</h4></p> "+
-                      "<a href='/deal?id="+args.id+"'>Read more &raquo;</a>"+
-                    "</p>"
-                ));       
-               
-                $(".js-image#div_"+i).append(
-                  "<a  href='/deal?id="+args.id+"'>"+
-                    "<img class='test1' class='js-small-image' src='"+args.image_url+"'/>"+
-                  "</a>" +
-                  ($(".js-image#div_"+i).is('.size-1')?"":"<div class='js-small-caption'>"+
-                    "<span>"+args.title+"</span>"+
-                  "</div>"),
-                  newdiv
-                );
+                $("#div_" + i).find(".js-small-caption > span").html(args.title);
+                $("#div_" + i).find(".js-overlay-caption-content > h4").html(args.title);
+                $("#div_" + i).find(".js-overlay-caption-content > p").html(args.text);
+                $("#div_" + i).find(".js-small-image").attr('src', args.image_url);
             }
         });
     }
     
-      function f(i)
+      function reloadDeal(i)
       {
         $("#div_"+i).animate({"opacity":"0"}, 200);
         $('.js-overlay-html').trigger('mouseout');

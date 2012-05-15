@@ -42,6 +42,10 @@ class Coupon < ActiveRecord::Base
 		return s	
 	end
 
+	def porcoupon_url
+		"/deal?id=#{id}"
+	end
+
 	def formatted_price
 		return "-" if price.cents < 0
 		return price.format

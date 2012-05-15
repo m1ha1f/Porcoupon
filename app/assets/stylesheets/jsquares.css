@@ -1,12 +1,4 @@
-﻿body {
-	font-family:Verdana;
-	color:#333;
-}
-a {
-	color:#666;
-}
-#js-container,
-#js-container-2 {
+﻿#js-container {
 	width:1120px;
 	position:relative;
 	left: 10%;
@@ -19,6 +11,7 @@ a {
 	position:absolute;
 	z-index:1;
 	text-align:left;
+	border: 4px solid white;
 }
 .js-image a img,
 a .js-overlay-image {
@@ -45,16 +38,16 @@ a .js-overlay-image {
 	font-size:.3em;
 }
 .js-small-caption {
+	padding: 0px 5px 0px 5px;
 	position:absolute;
 	bottom:0;
 	left:0;
 	background:#000;
-	width:94%;
-	padding:3%;
 	height:auto;
 }
 .js-small-caption {
 	opacity:.8;
+	width: 100%;
 }
 .js-caption-overlay {
 	background:#eee;
@@ -68,17 +61,33 @@ a .js-overlay-image {
 }
 .js-overlay-image {
 	float:left;
+	max-width: 200px;
+	height: auto;
+	padding: 0px 10px 0px 0px;
 }
 .js-overlay-html {
-	float:left;
-	padding:0 0 0 15px;
-	width:180px;
 }
 .js-overlay-html h4 {
-	margin:0;
-	padding:0 0 10px 0;
+	margin: 10px 0px 0px 0px;
+	padding:0px 0px 10px 0px;
+	font-weight: bold;
 }
 .js-overlay-html p {
-	font-size:.75em;
+	font-size: 1em;
 	margin:0;
+}
+.close_button {
+	position:absolute;
+	right:3px;
+	top:3px;
+}
+
+.close_button img {
+	height:20px;
+	width:20px
+}
+
+.close_button img:hover  {
+	height:25px;
+	width:25px
 }

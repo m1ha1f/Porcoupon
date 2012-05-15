@@ -5,7 +5,7 @@ class PagesController < ApplicationController
   def home
     @title = "Home"
     
-    @deals = Coupon.order("RANDOM()").limit(17)
+    @deals = Coupon.order("RANDOM()").limit(15)
     
     @dims = [3, 2, 2, 3, 2, 2, 2, 3, 2, 1, 1, 2, 1, 1, 1];
     @poz_top= [10,10,130,10,10,130,250,250,250,250,310,250,250,370,370];
