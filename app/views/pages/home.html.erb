@@ -5,6 +5,7 @@
             style="top: <%= @poz_top[i] %>px; left: <%= @poz_left[i] %>px;">   
         <%= link_to image_tag(deal.image_url, :alt => "Porcoupon", :class => "js-small-image"), 
             deal.porcoupon_url %>
+        <%if @dims[i]>1%>
         <div class="js-small-caption">
           <span><%= deal.title%></span>
         </div>
