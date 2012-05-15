@@ -2,3 +2,4 @@
 //= require jquery.hoverintent.min.js
 //= require jquery.jsquares.js
 //= require jquery.roundabout.min.js
+//= require fb.js
