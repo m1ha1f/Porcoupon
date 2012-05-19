@@ -13,12 +13,16 @@ body {
 
 header {
   width: 100%;
+  height: 110px;
   background: rgb(119, 225, 243);
   background-image: url('menu-texture.jpg');
 }
 
 header img {
   padding: 0.7em;
+  width: 300px;
+  height: auto;
+  margin-top:1em;
 }
 
 section {
@@ -109,9 +113,22 @@ a.signup_button {
     float:right;
     clear:right;
     margin-right: 1em;
-    margin-top: -2.7em;
+    margin-top: -1.6em;
     padding: 0.7em;
     font-size: 1.5em;
+}
+
+.advsearchbtn {
+  margin-left: 12.5%;
+  margin-bottom: 5px;
+}
+
+.advancedsearch {
+  padding: 5px;
+}
+
+.advancedsearch select {
+  width:125px;
 }
 
 .searchresult {
@@ -510,4 +527,51 @@ text-align:left;
   height: 200px;
   margin-left: auto;
   margin-right: auto;
+}
+
+
+
+
+/*Categories menu */
+.catmenu {
+  width: 200px;
+  margin-top: 10px;
+  position: fixed;
+}
+  
+.catmenu li a {
+  text-decoration: none;
+  height: 32px;
+    voice-family: "\"}\""; 
+    voice-family: inherit;
+    height: 24px;
+}
+  
+.catmenu li a:link, .catmenu li a:visited {
+  color: #777;
+  display: block;
+  background: url(menu8.gif);
+  padding: 8px 0 0 20px;
+}
+  
+.catmenu li a:hover {
+  color: #257EB7;
+  background: url(menu8.gif) 0 -32px;
+  padding: 8px 0 0 25px;
+}
+  
+.catmenu li a:active {
+  color: #fff;
+  background: url(menu8.gif) 0 -64px;
+  padding: 8px 0 0 25px;
+}
+
+.catmenu ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.catdetails {
+  margin-left: 220px;
 }

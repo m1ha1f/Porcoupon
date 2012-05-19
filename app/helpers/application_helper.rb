@@ -9,7 +9,7 @@ module ApplicationHelper
     end
 
     def logo
-    image_tag("logo.png", :alt => "Porcoupon", :class => "round", :style => "width:170px;height:100px;")
+    image_tag("logo.png", :alt => "Porcoupon")
   	end
 
 end
