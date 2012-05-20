@@ -575,3 +575,13 @@ text-align:left;
 .catdetails {
   margin-left: 220px;
 }
+
+.optsel {
+  float: right;
+  width: 200px;
+  margin-top: -30px;
+}
+
+.optsel select {
+  width: 200px;
+}

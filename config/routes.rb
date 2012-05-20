@@ -14,7 +14,8 @@ Porcoupon::Application.routes.draw do
   match "/signin", to: "sessions#new"
   match "/signout", :to => "sessions#destroy"
   match "/randomdeal", :to => "webservice#random_deal"
-  match "/fblogin", :to => "webservice#fblogin"
+  match "/fblogin", :to => "webservice#fblogin" 
+  #match "/fbsignup", :to => "webservice#fbsignup"
   
   # The priority is based upon order of creation:
   # first created -> highest priority.

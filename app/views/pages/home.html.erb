@@ -1,3 +1,11 @@
+<div class="optsel">
+    <select onchange="opt_changed(this)">
+      <option value="rand" <%if params[:opt] == 'rand' %> selected="selected" <%end%> >Random</option>
+      <option value="latest" <%if params[:opt] == 'latest' %> selected="selected" <%end%> >Latest</option>
+      <option value="views" <%if params[:opt] == 'views' %> selected="selected" <%end%>>Most views</option>
+      <option value="redirects" <%if params[:opt] == 'redirects' %> selected="selected" <%end%>>Most bought</option>
+    </select> 
+</div>
 <div id="js-container">
     <% @deals.each_with_index do |deal, i| %>
 
@@ -24,11 +32,17 @@
 </div>
 
 <script type="text/javascript">
+
+        function opt_changed(sel) {
+            var value = sel.options[sel.selectedIndex].value;
+            window.location = "/?opt="+value;
+        }
          
         $(document).ready(function() {          
             $('#js-container').jsquares({
                 caption_height: 150
             });
+
         });
 </script>
 

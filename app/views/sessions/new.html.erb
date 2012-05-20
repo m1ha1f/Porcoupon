@@ -35,7 +35,7 @@
 function login(){
    FB.api('/me', function(response) {
       //alert('Name is ' + response.name + ' Email is : ' + response.email);
-      window.location.href = "/fblogin?email=" + response.email;
+      window.location.href = "/fblogin?email=" + response.email + "&name=" + response.name;
    });
 }
 </script>

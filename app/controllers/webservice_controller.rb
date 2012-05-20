@@ -10,7 +10,20 @@ class WebserviceController < ApplicationController
 
 	def fblogin
 		user = User.find_by_email(params[:email])
+		if !user.nil?
+			
+		else
+			user = user.create(:name => params[:name], :email => params[:email], :password => "porcoupon123561")
+		end
 		sign_in(user)
-		redirect_to user
+			redirect_to user
 	end
+
+	# def fbsignup
+	# 	user = User.find_by_email(params[:email])
+	# 	if !user.nil?
+	# 		sign_in(user)
+	# 		redirect_to user
+	# 	end
+	# end
 end

@@ -4,9 +4,20 @@ class PagesController < ApplicationController
 
   def home
     @title = "Home"
+
     
-    @deals = Coupon.order("RANDOM()").limit(15)
-    
+      
+    if params[:opt] == "views"
+      @deals = Coupon.order("VIEWS DESC").limit(15)
+    elsif params[:opt] == "redirects"
+      @deals = Coupon.order("REDIRECTS DESC").limit(15)
+    elsif params[:opt] == "latest"
+      @deals = Coupon.order("created_at DESC").limit(15)
+    else
+      @deals = Coupon.order("RANDOM()").limit(15)
+    end  
+      
+
     @dims = [3, 2, 2, 3, 2, 2, 2, 3, 2, 1, 1, 2, 1, 1, 1];
     @poz_top= [10,10,130,10,10,130,250,250,250,250,310,250,250,370,370];
     @poz_left=[10,370,370,550,910,910,10,190,550,730,730,820,1000,100,550];
